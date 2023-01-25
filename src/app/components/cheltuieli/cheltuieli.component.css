@@ -1,0 +1,67 @@
+/* Grid Cheltuieli */
+::ng-deep #gridCheltuieli {
+    height: 460px;
+    padding-top: 30px;
+  }
+
+::ng-deep #gridCheltuieli .dx-datagrid-header-panel {
+  padding: 0;
+  background-color: rgba(85, 149, 222, 0.6);
+}
+
+::ng-deep #gridCheltuieli .dx-datagrid-header-panel .dx-toolbar {
+  margin: 0;
+  padding-right: 20px;
+  background-color: transparent;
+}
+
+::ng-deep #gridCheltuieli .dx-datagrid-header-panel .dx-toolbar-items-container {
+  height: 70px;
+}
+
+::ng-deep #gridCheltuieli .dx-datagrid-header-panel .dx-toolbar-before .dx-toolbar-item:not(:first-child) {
+  background-color: rgba(103, 171, 255, 0.6);
+}
+
+::ng-deep #gridCheltuieli .dx-datagrid-header-panel .dx-toolbar-before .dx-toolbar-item:last-child {
+  padding-right: 10px;
+}
+
+::ng-deep #gridCheltuieli .dx-datagrid-header-panel .dx-selectbox {
+  margin: auto 10px;
+}
+
+::ng-deep #gridCheltuieli .dx-datagrid-header-panel .dx-button {
+  margin: auto 0;
+}
+
+::ng-deep #gridCheltuieli .informer {
+  height: 70px;
+  width: 130px;
+  text-align: center;
+  color: #fff;
+}
+
+::ng-deep #gridCheltuieli .count {
+  padding-top: 20px;
+  line-height: 60px;
+  font-size: 22px;
+  margin: 0;
+}
+::ng-deep .long-title {
+  position: relative;
+  top: 70px;
+  left: 30px;
+  /* right: 45px; */
+  width: 200px;
+  z-index: 1;
+}
+
+::ng-deep .long-title h3 {
+  font-family: 'Segoe UI Light', 'Helvetica Neue Light', 'Segoe UI', 'Helvetica Neue', 'Trebuchet MS', Verdana;
+  font-weight: 200;
+  font-size: 18px;
+  text-align: left;
+  font-weight: bold;
+  /* margin: 0 0 0 45px; */
+}

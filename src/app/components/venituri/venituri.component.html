@@ -1,0 +1,73 @@
+<!-- <p>venituri works!</p> -->
+<div class="long-title">
+    <h3></h3>
+  </div>
+  <dx-data-grid id="gridVenituri" [dataSource]="venitData" width="620" [repaintChangesOnly]="true"
+    [showBorders]="true" [columnAutoWidth]="true" [columnMinWidth]="40">
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+
+    <!-- Trage de coloana pentru a grupa dupa acea coloana -->
+    <dxo-group-panel [visible]="false"></dxo-group-panel>
+
+    <!-- Mod de editare in rand -->
+    <dxo-editing mode="row" 
+      [allowAdding]="true" 
+      [allowUpdating]="true" 
+      [allowDeleting]="true" 
+      [useIcons]="true">
+    </dxo-editing>
+
+    <!-- Mod de editare in modal -->
+    <!-- <dxo-editing
+        mode="popup"
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+        [allowAdding]="true">
+    </dxo-editing> -->
+
+    <dxi-column dataField="id" caption="#" dataType="number" [width]="40" [allowEditing]="false"
+      alignment="center" [fixed]="true">
+    </dxi-column>
+    <dxi-column dataField="data" caption="Data Venit" dataType="date" format="dd.MM.yyyy" sortOrder="asc"
+      width="auto">
+      <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+    <dxi-column dataField="tip" caption="Tip Venit" [width]="150">
+      <dxo-lookup [dataSource]="venitTip" valueExpr="tip" displayExpr="tip"></dxo-lookup>
+      <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+    <dxi-column dataField="valoare" caption="Valoare Venit" dataType="number">
+      <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+
+    <dxo-summary >
+      <!-- <dxi-total-item column="data" summaryType="max" [customizeText]="customizeDate"
+        showInColumn="data"></dxi-total-item> -->
+        <dxi-total-item column="data" [customizeText]="customizeDate"
+        showInColumn="data"></dxi-total-item>
+        
+      <dxi-total-item column="valoare" summaryType="sum" valueFormat="#0" displayFormat="Total: {0}"
+        showInColumn="valoare"></dxi-total-item>
+    </dxo-summary>
+    <dxo-toolbar>
+      <dxi-item location="before">
+        <div *dxTemplate class="informer">
+          <span class="count">Venituri</span>
+          <!-- <span class="name">Venituri text</span> -->
+        </div>
+      </dxi-item>
+      <dxi-item location="before">
+        <div *dxTemplate>
+          <dx-select-box [items]="statuses" [value]="statuses[0]"
+            (onValueChanged)="selectStatus($event)"></dx-select-box>
+        </div>
+      </dxi-item>
+      <dxi-item location="after">
+        <div *dxTemplate>
+          <dx-button icon="add" (onClick)="addRow()">
+          </dx-button>
+        </div>
+      </dxi-item>
+      <dxi-item name="columnChooserButton"></dxi-item>
+    </dxo-toolbar>
+  </dx-data-grid>

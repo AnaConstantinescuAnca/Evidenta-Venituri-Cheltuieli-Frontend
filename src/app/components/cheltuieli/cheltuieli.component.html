@@ -1,0 +1,65 @@
+<!-- <p>cheltuieli works!</p> -->
+<!-- <div class="long-title">
+          <h3>Cheltuieli</h3>
+        </div> -->
+        <dx-data-grid id="gridCheltuieli" [dataSource]="cheltuieliSource" width="620" [repaintChangesOnly]="true"
+          [showBorders]="true" [columnAutoWidth]="true" [columnMinWidth]="40">
+
+          <dxo-scrolling mode="virtual"></dxo-scrolling>
+
+          <!-- Trage de coloana pentru a grupa dupa acea coloana -->
+          <dxo-group-panel [visible]="false"></dxo-group-panel>
+
+          <!-- Mod de editare in rand -->
+          <dxo-editing mode="row" [allowAdding]="true" [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true">
+          </dxo-editing>
+
+          <!-- Mod de editare in modal -->
+          <!-- <dxo-editing
+            mode="popup"
+            [allowUpdating]="true"
+            [allowDeleting]="true"
+            [allowAdding]="true">
+        </dxo-editing> -->
+
+          <dxi-column dataField="id" caption="#" dataType="number" [width]="40" [allowEditing]="false"
+            alignment="center" [fixed]="true" sortOrder="asc">
+          </dxi-column>
+          <dxi-column dataField="data" caption="Data Cheltuiala" dataType="date" format="dd.MM.yyyy" width="auto">
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+          </dxi-column>
+          <dxi-column dataField="tip" caption="Tip Cheltuiala" [width]="150">
+            <dxo-lookup [dataSource]="cheltuialaTip" valueExpr="tip" displayExpr="tip"></dxo-lookup>
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+          </dxi-column>
+          <dxi-column dataField="valoare" caption="Valoare Cheltuiala" dataType="number" format="#.##">
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+          </dxi-column>
+
+          <dxo-summary>
+            <dxi-total-item column="valoare" summaryType="sum" valueFormat="#.##" displayFormat="Total: {0}"
+              showInColumn="valoare"></dxi-total-item>
+          </dxo-summary>
+
+          <dxo-toolbar>
+            <dxi-item location="before">
+              <div *dxTemplate class="informer">
+                <span class="count">Cheltuieli</span>
+                <!-- <span class="name">Venituri text</span> -->
+              </div>
+            </dxi-item>
+            <dxi-item location="before">
+              <div *dxTemplate>
+                <dx-select-box [items]="statusec" [value]="statusec[0]"
+                  (onValueChanged)="selectStatus($event)"></dx-select-box>
+              </div>
+            </dxi-item>
+            <dxi-item location="after">
+              <div *dxTemplate>
+                <dx-button icon="add" (onClick)="addRow()">
+                </dx-button>
+              </div>
+            </dxi-item>
+            <dxi-item name="columnChooserButton"></dxi-item>
+          </dxo-toolbar>
+        </dx-data-grid>
